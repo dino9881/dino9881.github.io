@@ -11,6 +11,7 @@
 
       <div class="sidebar-about">
         
+        
         <h1><a id="_title" href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
         {{ site.tagline | truncatewords:50 | markdownify }}
       </div>
@@ -34,6 +35,7 @@
         <input type="text" name="q" id="tipue_search_input" pattern=".{1,}" title="At least 1 characters" required></div>
       <div style="clear: both;"></div>
     </form>
+    
     
         <div class="sidebar-social">
           {% include social.html social=author.social %}
