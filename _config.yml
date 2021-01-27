@@ -138,3 +138,5 @@ tipue_search:
     files: [search.html, index.html, tags.html]
     categories: []
     tags: []
+
+theme: jekyll-theme-dinky
