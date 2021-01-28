@@ -1,5 +1,11 @@
 ---
-published: false
+layout: post
+title: 첫 포스팅
+subtitle: "2021년 01월 29일 첫 포스팅"
+categories: etc
+tags: etc
+comments: true
+published: true
 ---
 
 # 첫 포스팅
