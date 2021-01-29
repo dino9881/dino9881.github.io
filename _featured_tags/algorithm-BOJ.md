@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: NLP
-slug: nlp
-category: class
+title: BOJ
+slug: BOJ
+category: algorithm
 menu: false
 order: 1
 ---
