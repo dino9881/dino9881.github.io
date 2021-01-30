@@ -1,142 +1,137 @@
-# -----------------------------------------------------------------------------
-#  User configuration
-# -----------------------------------------------------------------------------
+# Site settings
+title: Dino Blog
+SEOTitle: Dino Blog
+header-img: img/home-bg.jpg
+email: whdghthdms44@gmail.com
+description: "Algorithm study Blog"
+keyword: "algorithm, BOJ, boj, coding, dino, dino9881"
+url: "https://dino9881.github.io/"              # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
-title: Dino9881's Blog
+# Publish posts or collection documents with a future date.
+future: true
 
-# The unique resource location of your page.
-# Set to `https://<username>.github.io` when hosting on GitHub Pages
-url: "https://dino9881.github.io/"
+# SNS settings
+RSS: false
+#weibo_username:     huxpro
+#zhihu_username:     huxpro
+github_username:    dino9881
+instagram_username: jo_ho_98
+#twitter_username:   huxpro
+#facebook_username:  huxpro
+#linkedin_username:  firstname-lastname-idxxxx
 
-# Set to '' when hosting a blog on GitHub Pages, ie on `//<username>.github.io`
-# Set to '/<reponame>' when using the `gh-pages` branch of a repository
-baseurl: ""
 
-# A very short description of your page
-tagline: "Dino9881's Blog"
 
-# A short description of the page, used in the sidebar and as fallback for the meta description tag.
-# Markdown enabled, but don't use more than one paragraph (enforced by `>`)
-description: >
-  Dino9881's Blog.
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+# If you have timezone issue (e.g. #68) in China, uncomment to use this:
+#timezone: CN  
 
-# This should be the same author as first entry in `_data/authors.yml`
-author:
-  name: Dino9881
-  email: whdghthdms44@gmail.com
 
-# Fallback image and color
-image: /assets/img/main_left.JPG
-color: "#4f86aa"
 
-# The font used for headings. Expects a string that is a valid CSS font-family value.
-font_heading: "'Merriweather-Light','Lato','-apple-system','Verdana','PingFang SC','Helvetica Neue','Arial','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei','sans-serif'"
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+# make sure you have this gem installed
+# `$ gem install jekyll-paginate`
+plugins: [jekyll-paginate]
 
-# The text font. Expects a string that is a valid CSS font-family value.
-font: "'Merriweather-Light','Lato','-apple-system','Verdana','PingFang SC','Helvetica Neue','Arial','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei','sans-serif'"
 
-# The string encoding what fonts to fetch from Google Fonts.
-# See: https://qwtel.com/hydejack/docs/configuration/
-google_fonts: Lato
 
-# If you do not use a Google Fonts, uncomment the line below
-# no_google_fonts:     true
-
-# Set your Google Analytics id to receive `pageview` events.
-# To remove Google Anaylics from your page, remove the line below.
-google_analytics: G-xxxx
-
-# 댓글기능
-disqus: True
-disqus_shortname: xxxx
-
-# This text will appear in the footer of every page. Markdown enabled.
-copyright: "&copy; 2021.1. by Dino9881"
-
-# Format of the permalinks
-permalink:
-
-# Pagination configuration (used by the `blog` layout)
-paginate: 3
-paginate_path: "/page-:num/"
-
-# If you are upgrading form a v5 verison of Hydejack, uncomment the two lines below,
-# so that the location of the feed XML stays the same.
-# feed:
-#   path:              atom.xml
-
-# Set to true when building with the `--lsi` option
-# See: https://jekyllrb.com/docs/variables/#site-variables
-# use_lsi:             true
-
-# Set to `true` if you don't want to show an icon after each link that opens to an external site
-# no_mark_external:    true
-
-# Uncomment this line if third party plugins fail to work with dynimically loaded pages
-# disable_push_state:  true
-
-# Uncomment this line if want to disable the touch drawer on mobile
-# disable_drawer: true
-
-# -----------------------------------------------------------------------------
-#  Collections
-# -----------------------------------------------------------------------------
-
-collections:
-  featured_categories:
-    permalink: /category/:name/
-    output: true
-  featured_tags:
-    permalink: /tag/:name/
-    output: true
-  projects:
-    permalink: /projects/:path/
-    output: true
-
-# -----------------------------------------------------------------------------
-#  Advanced configuration
-# -----------------------------------------------------------------------------
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-redirect-from
-
-exclude:
-  - README.md
-  - LICENSE.md
-  - node_modules
-  - package.json
-  - package-lock.json
-  - Gemfile
-  - Gemfile.lock
-  - _posts/study/2020-12-26-making-blog04.md
-
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
 kramdown:
-  footnote_backlink: "&#x21a9;&#xfe0e;"
-  math_engine: mathjax
-  math_engine_opts:
-    preview: true
-    preview_as_code: true
+  input: GFM                            # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
-compress_html:
-  comments: ["<!-- ", " -->"]
-  clippings: all
-  endings: all
-  ignore:
-    envs: [development]
+highlighter: rouge
 
-sass:
-  style: compressed
 
-tipue_search:
-  include:
-    pages: false
-    collections: []
-  exclude:
-    files: [search.html, index.html, tags.html]
-    categories: []
-    tags: []
 
-theme: jekyll-theme-dinky
+# Disqus settings
+disqus_username: dino9881-github-io
+
+# Netease settings
+netease_comment: false
+
+
+
+# Analytics settings
+# Baidu Analytics 
+# ba_track_id: [your track id]
+
+# Google Analytics
+#ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+#ga_domain: huangxuan.me
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "어제보다 더 나은"
+sidebar-avatar: /img/dino9881.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                    # whether or not using Feature-Tags
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: false
+
+
+
+# Friends
+#friends: [
+ #   {
+    #     title: "Su",
+    #     href: "http://su.gallery/"
+    # },{
+ #       title: "乱序（Midare）",
+ #       href: "http://mida.re/"
+ #   },{
+ #       title: "Sherry Woo",
+ #       href: "https://sherrywoo.me/"
+ #   },{
+ #       title: "Kun Qian",
+ #       href: "http://kunq.me"
+ #   },{
+ #       title: "Ebn Zhang",
+ #       href: "http://ebnbin.com/"
+ #   },{
+ #       title: "SmdCn",
+ #       href: "http://blog.smdcn.net"
+ #   },{
+ #       title: "JiyinYiyong",
+ #       href: "http://tiye.me/"
+ #   },{
+ #       title: "DHong Say",
+ #       href: "http://dhong.co"
+ #   },{
+ #       title: "尹峰以为",
+ #       href: "http://ingf.github.io/"
+ #   }
+#]
+remote_theme: Huxpro/huxpro.github.io
