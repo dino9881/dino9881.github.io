@@ -101,11 +101,7 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
-utterances:
-  enable: true
-  repo: dino9881/blog-comments-repo
-  issue_term: title
-  theme: github-light
+
 
 
 
