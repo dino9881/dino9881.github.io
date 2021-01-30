@@ -1,14 +1,14 @@
 # Site settings
 title: Dino Blog
 SEOTitle: Dino Blog
-header-img: img/home-bg.jpg
+header-img: img/dino.jpg
 email: whdghthdms44@gmail.com
 description: "Algorithm study Blog"
 keyword: "algorithm, BOJ, boj, coding, dino, dino9881"
 url: "https://dino9881.github.io/"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
-# Publish posts or collection documents with a future date.
+# Publish posts or collection dcocuments with a future date.
 future: true
 
 # SNS settings
