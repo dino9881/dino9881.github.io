@@ -19,10 +19,10 @@ published: true
 ### sudo 
 
     apt install sudo  
-sudo를 설치한다.  
+- sudo를 설치한다.  
 
     visudo
-sudoer 파일에 접근할 수 있다.  
+- sudoer 파일에 접근할 수 있다.  
   
   
 
@@ -36,9 +36,9 @@ sudoer 파일에 접근할 수 있다.
 > sudo 에서 제공하는 보안 기능 중 하나인 Secure Path는 명령을 실행할 때 사용하는 가상 쉘의 Path 정보를 설정한다.  
   
 
-> 새로운 쉘에서 명령을 찾을 경로를 나열한 환경변수가 secure_path이다.  
+새로운 쉘에서 명령을 찾을 경로를 나열한 환경변수가 secure_path이다.  
 
-> 이 기능은 트로이목마 해킹 공격에 대한 일차적인 방어 기능을 제공한다.  
+이 기능은 트로이목마 해킹 공격에 대한 일차적인 방어 기능을 제공한다.  
 
 
 >> sudo로 실행할수 있는 명령어들을 시스템에서 제공하는 디렉토리에서만 찾게 함으로써 해킹 공격자가 심어놓은 프로그램들을 관리자 권한으로 실행할 수 없도록 막는다.  
@@ -57,15 +57,15 @@ sudoer 파일에 접근할 수 있다.
   
 
     groupadd user42
-user42 그룹을 생성한다.  
+- user42 그룹을 생성한다.  
   
   
     usermod -aG sudo,user42 <사용자이름>
-사용자를 해당 그룹에 추가한다.  
+- 사용자를 해당 그룹에 추가한다.  
   
 
     usermod -g user42 <사용자이름>
-user42그룹을 primary group이 되도록 설정한다.  
+- user42그룹을 primary group이 되도록 설정한다.  
   
 
 ### Vim 설치  
@@ -116,15 +116,15 @@ UFW(Uncomplicated FireWall)는 리눅스 환경에서 작동되는 방화벽 관
 
 #### SSH설정을 해보자
     apt install openssh-server
-open ssh 를 설치한다. (debian 설치과정에서 미리 설치가능하다.)
+- open ssh 를 설치한다. (debian 설치과정에서 미리 설치가능하다.)
     systemctl status ssh
-사용포트를 확인할 수 있다. 
+- 사용포트를 확인할 수 있다. 
     sudo vim /etc/ssh/sshd_config
-ssh설정을 변경할 수 있다. 22번 포트를 4242번으로 변경해주자.  
+- ssh설정을 변경할 수 있다. 22번 포트를 4242번으로 변경해주자.  
     PermitRootLogin no 
-루트 로그인을 차단한다.  
+- 루트 로그인을 차단한다.  
     sudo systemctl restart ssh
-재시작하여 설정을 적용한다.
+- 재시작하여 설정을 적용한다.
 
 
 
