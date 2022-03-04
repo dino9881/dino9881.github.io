@@ -68,9 +68,27 @@ user42 그룹을 생성한다.
 user42그룹을 primary group이 되도록 설정한다.  
   
 
-
-
+### Vim 설치  
   
+
+    sudo apt-get install vim  
+  
+
+
+### AppArmor   
+  
+
+#### AppArmor란?  
+
+#### AppArmor 설치하기  
+
+
+    sudo apt install apparmor #AppArmor 설치
+    sudo apt install apparmor-utils #AppArmor utils 설치
+    
+
+
+
 ## 요구사항을 설정하자  
 
 ### SSH
