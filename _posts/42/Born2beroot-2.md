@@ -79,13 +79,29 @@ user42그룹을 primary group이 되도록 설정한다.
   
 
 #### AppArmor란?  
-
+AppArmor(Application Armor)는 시스템 관리자가 프로그램 프로필 별로 프로그램의 역량을 제한할 수 있게 해주는 리눅스 커널 보안 모듈이다. 프로필들은 /etc/apparmor.d 디렉토리에 일반 텍스트 파일로 저장된다. MAC(Mandatory Access control)로 정의된 정책을 활용해 사용자와 프로세스의 행동을 제어 함으로써 DAC(Discretionary Access Control) 자원 접근 조절을 지원한다. 
 #### AppArmor 설치하기  
 
 
     sudo apt install apparmor #AppArmor 설치
     sudo apt install apparmor-utils #AppArmor utils 설치
-    
+    aa-enabled #활성화 여부 확인 가능 
+  
+
+### UFW
+
+
+#### UFW란?
+UFW(Uncomplicated FireWall)는 리눅스 환경에서 작동되는 방화벽 관리 프로그램이다. 
+> 방화벽 은 미리 정의된 보안 규칙에 기반한, 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템이다. 
+  
+
+#### UFW를 설치하자
+    apt-get install ufw # ufw 설치
+    sudo ufw enable # ufw실행시키기
+    sudo ufw allow 4242 # 4242포트 열기 
+    sudo ufw status vebos # ufw 상태 확인 
+    sudo ufw default deny # 기본 deny 설정 
 
 
 
@@ -105,6 +121,10 @@ open ssh 를 설치한다. (debian 설치과정에서 미리 설치가능하다.
 사용포트를 확인할 수 있다. 
     sudo vim /etc/ssh/sshd_config
 ssh설정을 변경할 수 있다. 22번 포트를 4242번으로 변경해주자.  
+    PermitRootLogin no 
+루트 로그인을 차단한다.  
+    sudo systemctl restart ssh
+재시작하여 설정을 적용한다.
 
 
 
