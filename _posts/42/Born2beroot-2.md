@@ -13,25 +13,64 @@ published: true
 # Born2beroot 진행하기  
 
 ## 기본설정을 하자  
+  
+
+  
+### sudo 
 
     apt install sudo  
 sudo를 설치한다.  
 
     visudo
 sudoer 파일에 접근할 수 있다.  
+  
+  
 
->> sudo 명령은 해당 명령을 root의 권한으로 실행하고 싶을때 사용하는 명령이므로 보안상 상당한 위험을 가진다. 따라서 sudoer 라는 설정 파일을 통해서 sudo명령을 사용할 수 있는 계정의 범위를 한정한다.  
+> sudo 명령은 해당 명령을 root의 권한으로 실행하고 싶을때 사용하는 명령이므로 보안상 상당한 위험을 가진다. 따라서 sudoer 라는 설정 파일을 통해서 sudo명령을 사용할 수 있는 계정의 범위를 한정한다.  
+  
+
 
     secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
-secure_path에 /snap/bin 을 추가한다. 
- 
->> sudo 에서 제공하는 보안 기능 중 하나인 Secure Path는 명령을 실행할 때 사용하는 가상 쉘의 Path 정보를 설정한다.  
->> 새로운 쉘에서 명령을 찾을 경로를 나열한 환경변수가 secure_path이다.  
-이 기능은 트로이목마 해킹 공격에 대한 일차적인 방어 기능을 제공한다. 
+
+
+> sudo 에서 제공하는 보안 기능 중 하나인 Secure Path는 명령을 실행할 때 사용하는 가상 쉘의 Path 정보를 설정한다.  
+  
+
+> 새로운 쉘에서 명령을 찾을 경로를 나열한 환경변수가 secure_path이다.  
+
+> 이 기능은 트로이목마 해킹 공격에 대한 일차적인 방어 기능을 제공한다.  
+
+
+>> sudo로 실행할수 있는 명령어들을 시스템에서 제공하는 디렉토리에서만 찾게 함으로써 해킹 공격자가 심어놓은 프로그램들을 관리자 권한으로 실행할 수 없도록 막는다.  
+
+
+    Defaults authfail_message="authfail" #권한 획득 실패 시 출력 메세지 설정
+    Defaults badpass_message="badpass" #비밀번호 불일치 시 출력 메세지 설정
+    Defaults log_input #sudo명령어 실행 시 입력된 명령어 log 저장
+    Defaults log_output #sudo명령어 실행 시 출력 log 저장
+    Defaults requiretty #sudo TTY모드 활성화 
+    Defaults iolog_dir="/var/log/sudo/" #sudo log 저장 디렉토리 설정
+    Defaults passwd_tries=3 #비밀번호 시도 횟수 지정
+> Ctrl + x , Y 로 저장
+
+### 그룹 설정  
+  
+
+    groupadd user42
+user42 그룹을 생성한다.  
+  
+  
+    usermod -aG sudo,user42 <사용자이름>
+사용자를 해당 그룹에 추가한다.  
+  
+
+    usermod -g user42 <사용자이름>
+user42그룹을 primary group이 되도록 설정한다.  
+  
 
 
 
-
+  
 ## 요구사항을 설정하자  
 
 ### SSH
