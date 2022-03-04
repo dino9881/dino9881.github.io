@@ -1,10 +1,11 @@
 ---
 layout: post
-title: 2022-01-12-TIL
+title: Born2beroot 시작하기
 subtitle: "Born2beroot"
 categories: 42seoul
 tags:
 - 42
+- Born2beroot
 - TIL
 comments: true
 published: true
