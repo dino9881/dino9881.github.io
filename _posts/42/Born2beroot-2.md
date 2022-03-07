@@ -117,18 +117,12 @@ UFW(Uncomplicated FireWall)는 리눅스 환경에서 작동되는 방화벽 관
 - 접속후 정보를 주고 받을 때에는 서버와 사용자 모두가 사용하는 한 개의 키(대칭 키)를 생성하여 복호화와 암호화를 진행한다. 이 때 사용하는 키는 접속할 때마다 생성되고, 정보의 교환이 완료되면 폐기된다. 
 
 #### SSH설정을 해보자
-    apt install openssh-server
-- open ssh 를 설치한다. (debian 설치과정에서 미리 설치가능하다.)
-    systemctl status ssh
-- 사용포트를 확인할 수 있다. 
-    sudo vim /etc/ssh/sshd_config
-- ssh설정을 변경할 수 있다. 22번 포트를 4242번으로 변경해주자.  
-    PermitRootLogin no 
-- 루트 로그인을 차단한다.  
-    sudo systemctl restart ssh
-- 재시작하여 설정을 적용한다.
-    hostname -I
-- 가상머신의 주소.
+    apt install openssh-server # open ssh 를 설치한다. (debian 설치과정에서 미리 설치가능하다.)
+    systemctl status ssh #사용포트를 확인할 수 있다. 
+    sudo vim /etc/ssh/sshd_config #ssh설정을 변경할 수 있다. 22번 포트를 4242번으로 변경해주자.  
+    PermitRootLogin no #루트 로그인을 차단한다.  
+    sudo systemctl restart ssh #재시작하여 설정을 적용한다.
+    hostname -I #가상머신의 주소.
 
 1. virtual machine 에서 Tools -> Network -> Create를 눌러 네트워킹을 하나 만들어준다.  
 2. 가상머신에서 setting -> Network를 누른 후 Port Forwarding을 눌러서  Host IP는 vboxnet0 에 적힌 IP를 , GuestIP 에 가상머신 주소를 입력하고 양쪽 포트는 모두 4242 를 입력해준다.  
