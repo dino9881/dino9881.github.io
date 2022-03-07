@@ -127,6 +127,35 @@ UFW(Uncomplicated FireWall)는 리눅스 환경에서 작동되는 방화벽 관
 - 루트 로그인을 차단한다.  
     sudo systemctl restart ssh
 - 재시작하여 설정을 적용한다.
+    hostname -I
+- 가상머신의 주소.
+
+1. virtual machine 에서 Tools -> Network -> Create를 눌러 네트워킹을 하나 만들어준다.  
+2. 가상머신에서 setting -> Network를 누른 후 Port Forwarding을 눌러서  Host IP는 vboxnet0 에 적힌 IP를 , GuestIP 에 가상머신 주소를 입력하고 양쪽 포트는 모두 4242 를 입력해준다.  
+3. 아이맥 터미널에서 ssh < 사용자 이름 >@< IP 주소 > -p 4242 로 ssh 접근을 한다. 
+
+- 특정 계정에 su 권한 획득 권한 부여하기? 
+
+#### Port Forwarding?
+
+
+### 패스워드 정책
+
+#### 패스워드 정책 설정 
+
+    sudo vi /etc/login.defs #패스워드 설정
+    PASS_MAX_DAYS 30 #30일마다 패스워드 변경
+    PASS_MIN_DAYS 2 #한 번 변경시 최소 2일 사용
+    PASS_WARN_AGE 7 #7일전에 사용자에게 경고
+
+    sudo apt install libpam-pwquality #패스워드 관리 모듈 설치
+    passwd -e <사용자 명> # 사용자 패스워드를 변경한다. 다음번 접속시 변경 가능 
+    sudo vi /etc/pam.d/common-password
+- 설정으로 들어가서 과제에서 명시한 내용들을 넣어준다. 
+
+
+
+
 
 
 
