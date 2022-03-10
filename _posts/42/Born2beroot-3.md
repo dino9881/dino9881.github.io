@@ -12,29 +12,31 @@ published: false
 ---
 # Born2beroot 답변 정리
  
-1. 가상머신은 컴퓨터의 하드웨어를 소프트웨워로 구현한 것, 운영 체제나 응용 프로그램을 설치 및 실행할 수 있다. 
-2. 선택한 운영체제 : Debian
-3. Centos 와 Debian 의 차이 
-4. Debian 을 선택한 경우 aptitude 와 apt 간의 차이, APPArmor 가 무엇인지?
-5. defense 동안 5분마다 정보를 띄워야함 
+1. 가상머신은 컴퓨터의 하드웨어를 소프트웨워로 구현한 것, 운영 체제나 응용 프로그램을 설치 및 실행할 수 있다. -> 노트참고
+2. 선택한 운영체제 : Debian ->노트참고
+3. Centos 와 Debian 의 차이 -> 노트참고
+4. Debian 을 선택한 경우 aptitude 와 apt 간의 차이, APPArmor 가 무엇인지?->노트참고
+5. defense 동안 5분마다 정보를 띄워야함  -> crontab -e 입력 하고 5분으로 변경 
 
-6. 패스워드를 subject에서 제시한대로 했는지
-7. UFW, SSH 실행 여부 
+6. 패스워드를 subject에서 제시한대로 했는지 
+7. UFW, SSH 실행 여부 -> ufw status 입력 
 
-8. 사용자가 "sudo"와 "user42"그룹에 포함되었는지. 
-9. 유저를 새로 만들고 subject룰대로 패스워드를 만든다. 이때 피평가자는 어떻게 룰을 구현했는지 설명할 수 있어야함(일반적으로 수정된 하나, 혹은 두개의 파일이 있을 것이다. ) 
-10. 유저를 만들었다면 피평가자는 새로운 그룹인 "evaluationg"그룹을 만들어라 , 그 유저가 evaluating 그룹에 속하도록 확인해라.
+8. 사용자가 "sudo"와 "user42"그룹에 포함되었는지. id jonkim 입력해서 그룹들 확인 usermod -G sudo,user42 jonkim 으로 그룹을 설정해주고 usermod -g user42 jonkim으로 기본 그룹을 설정 가능 , sudo deluser 사용자명 그룹명 을 통해 그룹에서 사용자를 제거할 수 있고,, sudo userdel-r 사용자명을 통해 사용자 제거 가능하다. 
+9. 유저를 새로 만들고 subject룰대로 패스워드를 만든다. 이때 피평가자는 어떻게 룰을 구현했는지 설명할 수 있어야함(일반적으로 수정된 하나, 혹은 두개의 파일이 있을 것이다. )  useradd <사용자이름> passwd <사용자 이름> 으로 사용자를 만들고 비밀번호를 설정가능하다.  패스워드 설정파일 sudo vi /etc/login.defs 에서 패스워드 설정 가능 passwd -e <사용자명> 으로 사용자 패스워드 변경이 가능하고 다음번 접속시 변경할 수 있다. 패스워드 관리 모듈을 sudo apt install libpam-pwquality 설치하고 sudo vi /etc/pam.d/common-password에서 추가 설정 가능 
+10. 유저를 만들었다면 피평가자는 새로운 그룹인 "evaluationg"그룹을 만들어라 , 그 유저가 evaluating 그룹에 속하도록 확인해라. groupadd evaluating 그룹을 만들고 usermod -g evaluating <유저 이름>
 11. 피평가자는 비밀번호 정책의 이점이 불이익을 보완할 만큼인지를 설명해라
 
-12. hostname 을 확인해라 <사용자이름42>인지 
-13. hostname 을 평가자의 것으로 변경하고 재 시작해라. 재시작시 업데이트되어야한다.
-14. 피평가자는 virtual machine 의 partition을 어떻게 볼수있는지 설명하고, 과제에 주어진 예시와 비교해라 
-15. 학생은 LVM이 어떻게 작동하는지 설명해야한다. 
-16. sudo프로그램이 적절하게 설치되었는지 확인해야한다. 
+12. hostname 을 확인해라 <사용자이름42>인지 hostnamectl 입력 
+13. hostname 을 평가자의 것으로 변경하고 재 시작해라. 재시작시 업데이트되어야한다. sudo hostnamectl set-hostname <호스트명>으로 변경 한다. 
+14. 피평가자는 virtual machine 의 partition을 어떻게 볼수있는지 설명하고, 과제에 주어진 예시와 비교해라 lsblk 입력
+15. 학생은 LVM이 어떻게 작동하는지 설명해야한다. -> 노트참고 
+16. sudo프로그램이 적절하게 설치되었는지 확인해야한다. apt install sudo 입력해서 확인 visudo 로 들어가서 Allow members of group sudo  밑에 <사용자이름> ALL=(ALL) ALL 입력시 루트권한 부여 가능 
 17. 새로운 유저가 sudo그룹에 들어가는것을 보여주어야한다. 
 18. sudo에대한 엄격한 룰을 부과한다. 
-19. sudo의 가치와, 작동에 대해 설명해야한다, 그리고 과제가 부여한 규칙의 이해를 보여주어야한다. "/var/log/sudo/"폴더가 존재하고, 최소 하나의 파일이 있는지를 확인해라
+19. sudo의 가치와, 작동에 대해 설명해야한다, 그리고 과제가 부여한 규칙의 이해를 보여주어야한다. "/var/log/sudo/"폴더가 존재하고, 최소 하나의 파일이 있는지를 확인해라 폴더로 들어가서 00/00 에서 로그 확인 
 20. via sudo 명령어를 입력해라 폴더에 업데이트 되는지 확인해라 
+
+
 21. UFW 프로그램이 적절하게 설치되었는지,잘 작동 하는지 설명해라 .
 22. UFW 에 대한 기본적인 설명과 사용하는 가치를 설명해라 .
 
