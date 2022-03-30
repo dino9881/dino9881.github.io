@@ -59,56 +59,56 @@ published: true
 이외에도 여러 키 조합으로 특정 신호를 내보낼 수 있다.   
 
 ### 함수를 파악하자
-₩₩₩
+<pre><code>
     void (*signal(int signum, void (*handler)(int)))(int)
-₩₩₩
+</code></pre>
 - signum = 시그널 번호
 - handler = 시그널 처리 방법
 	SIG_DFL -> 기존 방법을 따른다.  
 	SIG_IGN -> 시그널을 무시한다.  
 	함수 이름 -> 시그널이 발생하면 지정된 함수를 호출한다.  
-₩₩₩
+<pre><code>
     int sigemptyset(sigset_t *set)
-₩₩₩
+</code></pre>
 - sigset_t 집합에서 모든 시그널을 제거하는 함수  
-₩₩₩
+<pre><code>
     int sigaddset(sigset_t *set, int signum)
-₩₩₩
+</code></pre>
 - set = 기존 sigset_t  
 - signum = 기존 set 에 추가할 signal  
-₩₩₩
+<pre><code>
     int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)  
-₩₩₩
+</code></pre>
 - signum = 시그널 번호  
 - act = 새롭게 지정할 행동  
 - sigaction  = 기존 행동  
-₩₩₩
+<pre><code>
     struct sigaction {
     		void (*sa_handler)(int);
     		void (*sa_sigaction)(int, siginfo_t *, void *);// sa_falgs 가 SA_SIGINFO 일때 sa_handler 대신 동작하는 핸들러 함수 sa_handler 보다 다양한 인수를 받을 수 있는것이 특징이다. 
     		sigset_t sa_mask; // 시그널을 처리하는 동안 블록화할 시그널 집합의 마스크  
     		int sa_flags; 
     	}
-₩₩₩
+</code></pre>
 
-₩₩₩
+<pre><code>
     int kill(pid_t pid, int sig)
-₩₩₩
+</code></pre>
 - pid = PID  
 - sig = 시그널 번호  
 프로세스에 시그널을 전송하는 함수  
-₩₩₩
+<pre><code>
     pid_t getpid(void)  
-₩₩₩
+</code></pre>
 실행중인 프로세스 ID를 반환하는 함수  
-₩₩₩
+<pre><code>
     int pause(void)  
-₩₩₩
+</code></pre>
 항상 -1 을 반환하며 errno에는 ERESTARTNOHAND로 설정 시그널을 수신할 때까지 대기 상태로 빠진다.  
-₩₩₩
+<pre><code>
     sleep(int sec)  
     usleep(int microsec)
-₩₩₩
+</code></pre>
 
 일정 시간동안 코드의 실행을 늦출 수 있는 함수
 
