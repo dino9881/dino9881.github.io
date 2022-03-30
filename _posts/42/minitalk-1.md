@@ -71,18 +71,15 @@ void (*signal(int signum, void (*handler)(int)))(int)
 int sigemptyset(sigset_t *set)
 </code></pre>
 - sigset_t 집합에서 모든 시그널을 제거하는 함수  
+- 성공시 0, 실패시 -1 리턴
 <pre><code>
 int sigaddset(sigset_t *set, int signum)
 </code></pre>
 - set = 기존 sigset_t  
 - signum = 기존 set 에 추가할 signal  
+- 성공시 0, 실패시 -1 리턴
 <pre><code>
 int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)  
-</code></pre>
-- signum = 시그널 번호  
-- act = 새롭게 지정할 행동  
-- sigaction  = 기존 행동  
-<pre><code>
 struct sigaction {
 		void (*sa_handler)(int);
 		void (*sa_sigaction)(int, siginfo_t *, void *);// sa_falgs 가 SA_SIGINFO 일때 sa_handler 대신 동작하는 핸들러 함수 sa_handler 보다 다양한 인수를 받을 수 있는것이 특징이다. 
@@ -90,25 +87,36 @@ struct sigaction {
 		int sa_flags; 
 	}
 </code></pre>
+- signum = 시그널 번호  
+- act = 새롭게 지정할 행동  
+- sigaction  = 기존 행동  
+- 성공시 0, 실패시 -1 리턴
+
 
 <pre><code>
 int kill(pid_t pid, int sig)
 </code></pre>
 - pid = PID  
 - sig = 시그널 번호  
-프로세스에 시그널을 전송하는 함수  
+- 프로세스에 시그널을 전송하는 함수  
+- 성공시 0, 실패시 -1 리턴
 <pre><code>
 pid_t getpid(void)  
 </code></pre>
-실행중인 프로세스 ID를 반환하는 함수  
+- 실행중인 프로세스 ID를 반환하는 함수  
 <pre><code>
 int pause(void)  
 </code></pre>
-항상 -1 을 반환하며 errno에는 ERESTARTNOHAND로 설정 시그널을 수신할 때까지 대기 상태로 빠진다.  
+- 항상 -1 을 반환하며 errno에는 ERESTARTNOHAND로 설정 시그널을 수신할 때까지 대기 상태로 빠진다.  
 <pre><code>
 sleep(int sec)  
 usleep(int microsec)
 </code></pre>
 
-일정 시간동안 코드의 실행을 늦출 수 있는 함수
-
+- 일정 시간동안 코드의 실행을 늦출 수 있는 함수
+<pre><code>
+typedef struct {
+    unsigned int __sigbits[4];
+} sigset_t;
+</code></pre>
+- 시그널 집합의 처리를 위해 제공하는 구조체  "<signal.h>"에 정의되어 있다.
