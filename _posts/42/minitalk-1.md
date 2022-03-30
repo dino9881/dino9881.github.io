@@ -60,10 +60,29 @@ published: true
 
 ### 함수를 파악하자
     void (*signal(int signum, void (*handler)(int)))(int)
-- 
-- sigemptyset  
-- sigaddset  
-- sigaction  
+- signum = 시그널 번호
+- handler = 시그널 처리 방법
+	SIG_DFL -> 기존 방법을 따른다.  
+	SIG_IGN -> 시그널을 무시한다.  
+	함수 이름 -> 시그널이 발생하면 지정된 함수를 호출한다.  
+
+    int sigemptyset(sigset_t *set)
+- sigset_t 집합에서 모든 시그널을 제거하는 함수  
+
+    int sigaddset(sigset_t *set, int signum)
+- set = 기존 sigset_t  
+- signum = 기존 set 에 추가할 signal  
+
+    int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)  
+- signum = 시그널 번호  
+- act = 새롭게 지정할 행동  
+- sigaction  = 기존 행동  
+    struct sigaction {
+    		void (*sa_handler)(int);
+    		void (*sa_sigaction)(int, siginfo_t *, void *);// sa_falgs 가 SA_SIGINFO 일때 sa_handler 대신 동작하는 핸들러 함수 sa_handler 보다 다양한 인수를 받을 수 있는것이 특징이다. 
+    		sigset_t sa_mask; // 시그널을 처리하는 동안 블록화할 시그널 집합의 마스크  
+    		int sa_flags; 
+    	}
 - kill  
 - getpid 
 - pause  
