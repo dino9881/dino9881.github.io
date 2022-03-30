@@ -83,9 +83,19 @@ published: true
     		sigset_t sa_mask; // 시그널을 처리하는 동안 블록화할 시그널 집합의 마스크  
     		int sa_flags; 
     	}
-- kill  
-- getpid 
-- pause  
-- sleep  
-- usleep 
+
+    int kill(pid_t pid, int sig)
+- pid = PID  
+- sig = 시그널 번호  
+프로세스에 시그널을 전송하는 함수  
+
+    pid_t getpid(void)  
+실행중인 프로세스 ID를 반환하는 함수  
+
+    int pause(void)  
+항상 -1 을 반환하며 errno에는 ERESTARTNOHAND로 설정 시그널을 수신할 때까지 대기 상태로 빠진다.  
+
+    sleep(int sec)  
+    usleep(int microsec)
+일정 시간동안 코드의 실행을 늦출 수 있는 함수
 
