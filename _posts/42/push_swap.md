@@ -1,0 +1,55 @@
+---
+layout: post
+title: push_swap (1)
+subtitle: "push_swap 시작하기"
+categories: 42seoul
+tags:
+- 42
+- TIL
+- Minitalk
+comments: true
+published: true
+---
+
+# push_swap 시작하기
+
+## 목표 
+스택에 들어온 숫자들을 주어진 명령어들을 가능한 적게 사용해서 두 개의 스택 속에서 정렬을 하자. 
+
+## 조건
+정수값들의 집합, 2개의 스택, 두 스택을 조작하기 위한 명령어 집합이 주어진다. 
+- swap 스택의 가장 위에있는 원소 두개의 수를 바꾼다.
+- push 가장 위에 있는 숫자를 다른 스택으로 옮긴다. 
+- rotate 스택의 모든 원소들의 인덱스를 1 올린다. 
+- reverse rotate 스택의 모든 원소들의 인덱스를 1 내린다. 
+
+## 구현
+
+### 인자 유효값 체크
+인자들은 공백으로 구분된 공백으로 구분된 정수들로 입력된다. libft과제에서 구현한 split 을 이용하여 argc를 순회 하며 문자열들을 받은 후, ft_atoi 함수로 정수로 만들어 주었다. 정수로 만들어주면서 정수 범위를 초과하거나, 정수가 아닌 문자를 발견하게 되면 즉시 에러를 출력하면서 프로그램을 종료하게 된다. 
+
+### 자료구조 만들기 
+과제에서는 스택이라고 명시되어 있으나 r, rr 명령어는 덱과 같이 동작하기 때문에 덱을 사용하기로 결정했다.  
+라이브러리에서 덱을 지원해주지 않기 때문에 직접 구현해서 사용해야한다. 배열을 사용하는 방법도 있지만, 이중 연결리스트를 만드는 연습을 해보고 싶어서 리스트로 구현을 했다.  
+
+<pre><code>
+typedef struct s_node
+{
+	int				num;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
+
+typedef struct s_deque
+{
+	int		size;
+	t_node	*front;
+	t_node	*back;
+}	t_deque;
+</code></pre>
+다음과 같은 구조체들을 선언 한 후 함수들로 push, pop 등을 구현했다.  
+
+### 알고리즘 학습하기  
+
+슬랙을 검색해보니 퀵정렬, 기수정렬, 그리디 등 여러가지로 방식으로 구현을 한 사람들을 볼 수 있었다. 
+
