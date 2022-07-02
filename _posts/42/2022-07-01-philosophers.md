@@ -1,4 +1,4 @@
-***
+--- 
 layout: post
 title: Minitalk(1)
 subtitle: "Minitalk 시작하기"
@@ -9,7 +9,7 @@ tags:
 - Minitalk
 comments: true
 published: true
-***
+---
 
 ## Philosopher 시작하기.
 
