@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: Minitalk(1)
-subtitle: "Minitalk 시작하기"
+subtitle: " Philosopher 시작하기"
 categories: 42seoul
 tags:
 - 42
