@@ -38,7 +38,6 @@ timezone 구조체 사용은 구식화되어 보통은 tz 인자를 NULL로 지�
 
 ##### Return Value
 성공시 0 을 반환하고 오류시 -1을 반환한다. 
-***
 #### pthread_create
 <pre><code>
 
@@ -56,7 +55,6 @@ attr 을 NULL 로 할경우 기본 특성으로 지정된다. 리눅스에서의
 ##### Return Value
 성공할경우 쓰레드식별자인 thread 에 쓰레드 식별번호를 저장하고, 0을 리턴한다. 실패했을경우 에러코드 값을 리턴한다. 
 쓰레드 생성을 위한 자원이 부족하거나, PTHREAD_THREADS_MAX를 초과해서 쓰레드 생성을 요청ㅇ할경우 에러가 발생한다. 
-***
 #### pthread_detach
 <pre><code>
 
@@ -72,7 +70,6 @@ pthread_detach()함수를 호출하는 외에도 pthread_create()시 pthread_att
 
 ##### Return Value
 성공하면 0, 실패하면 0이 아닌 값을 리턴한다. 
-***
 #### pthread_join
 <pre><code>
 
@@ -88,7 +85,6 @@ joinable 쓰레드가 종료되면 , 메모리 자원의 해제가 자동으로 
 
 ##### Return Value
 성공할 경우 thread 에 식별 번호를 저장하고 0을 리턴한다. 실패했을경우 에러코드 값을 리턴한다. 
-***
 #### pthread_mutex_init
 <pre><code>
 
@@ -104,7 +100,6 @@ int pthread_mutex_init(pthread_mutex_t * mutex, const pthread_mutex_attr *attr);
 
 ##### Return Value
 항상 0 을 반환한다. 
-***
 
 #### pthread_mutex_init
 <pre><code>
@@ -119,7 +114,6 @@ mutex가 가르키는 뮤텍스 객체를 파기한다.
 
 ##### Return Value
 성공시 0을 반환, 실패할 경우 -1을 반환한다. 
-***
 #### pthread_mutex_lock, pthread_mutex_unlock
 <pre><code>
 
