@@ -6,7 +6,7 @@ categories: 42seoul
 tags:
 - 42
 - TIL
-- Minitalk
+- Philosopher
 comments: true
 published: true
 ---
@@ -105,12 +105,12 @@ int pthread_mutex_init(pthread_mutex_t * mutex, const pthread_mutex_attr *attr);
 ##### Description  
 쓰레드가 공유하는 데이터 영역을 보호하기 위해서 사용되는 도구인 뮤텍스 객체를 초기화 하는 함수이다.  
 첫번째 인자인 mutex는 초기화 시킬 뮤텍스 객체이다. attr인자를 통해 뮤텍스의 특징을 정의할 수 있다.  
-뮤텍스는 "fast". "recursive", "error checking"의 종류를 가지며 기본적으로 "fast"rk tkdydehlsek. 
+뮤텍스는 "fast". "recursive", "error checking"의 종류를 가지며 기본적으로 "fast"가 사용된다. 
 
 ##### Return Value
 항상 0 을 반환한다. 
 
-#### pthread_mutex_init
+#### pthread_mutex_destroy
 ``` c
 
 #include <pthread.h>
